@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" role="img" aria-label="Logo UKM Al-Fath Universitas Telkom">
+  <!-- Outer subtle white ring and dark border -->
+  <circle cx="256" cy="256" r="248" fill="#FFFFFF" stroke="#18181B" stroke-width="10"/>
+  <!-- Main Al-Fath Crimson Red Circle -->
+  <circle cx="256" cy="256" r="230" fill="#DC2626"/>
+
+  <!-- White Open-Book / Shield Crest -->
+  <path
+    d="M156 108C156 98 164 91 174 92C206 96 234 106 256 124C278 106 306 96 338 92C348 91 356 98 356 108V220C356 276 310 318 256 326C202 318 156 276 156 220V108Z"
+    fill="#FFFFFF"
+  />
+
+  <!-- Stylized Crimson Cutouts Representing Arabic Calligraphy الفتح inside the Shield -->
+  <!-- Center Spine / Alif & Vertical Strokes -->
+  <path
+    d="M250 132C250 127 254 123 259 123H263V238C263 262 248 282 224 290C202 297 180 284 176 262C173 246 181 230 196 224C208 219 221 224 227 235C231 243 229 253 222 259C216 264 207 263 203 257C200 253 201 247 205 244"
+    stroke="#DC2626"
+    stroke-width="14"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  />
+  <!-- Right Calligraphy Loop (Fa / Ta / Ha curve) -->
+  <path
+    d="M286 146C306 146 324 162 324 185C324 210 304 228 280 228C264 228 254 217 254 204C254 191 264 181 277 181C289 181 297 190 297 201C297 224 282 258 256 274"
+    stroke="#DC2626"
+    stroke-width="14"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  />
+  <!-- Left Calligraphy Stroke (Ha / Alif) -->
+  <path
+    d="M222 140C202 145 188 162 188 184V202C188 210 194 215 202 215H222"
+    stroke="#DC2626"
+    stroke-width="14"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  />
+  <!-- Calligraphy Nuqtah (Dots) -->
+  <circle cx="290" cy="126" r="8" fill="#DC2626"/>
+  <circle cx="312" cy="134" r="8" fill="#DC2626"/>
+  <circle cx="206" cy="126" r="8" fill="#DC2626"/>
+
+  <!-- Wordmark AL-FATH -->
+  <text
+    x="256"
+    y="386"
+    text-anchor="middle"
+    fill="#FFFFFF"
+    font-family="Outfit, Plus Jakarta Sans, Arial, sans-serif"
+    font-weight="900"
+    font-size="48"
+    letter-spacing="4"
+  >AL-FATH</text>
+
+  <!-- Subtitle Universitas Telkom -->
+  <text
+    x="256"
+    y="424"
+    text-anchor="middle"
+    fill="#FFFFFF"
+    font-family="Plus Jakarta Sans, Arial, sans-serif"
+    font-weight="600"
+    font-size="22"
+    letter-spacing="0.5"
+  >Universitas Telkom</text>
+</svg>
