@@ -302,6 +302,6 @@ export const faqs = [
   {
     question: 'Bagaimana sistem pembayaran dan pengambilan jersey?',
     answer:
-      'Pembayaran via transfer/e-wallet yang tertera di form; pengambilan dilakukan di area Telkom University.',
+      'Pembayaran via QRIS yang tertera di form; pengambilan dilakukan di area Telkom University.',
   },
 ];
