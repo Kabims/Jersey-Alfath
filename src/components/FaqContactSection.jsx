@@ -94,28 +94,35 @@ export default function FaqContactSection() {
                 </div>
               </div>
 
-              {/* Direct WhatsApp Box */}
-              <div className="mt-5 rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-sm">
-                <p className="text-xs font-bold uppercase tracking-wider text-zinc-300">
-                  {siteMetadata.contactPerson.role}
-                </p>
-                <p className="mt-1 font-display text-lg font-extrabold text-white">
-                  {siteMetadata.contactPerson.name}
-                </p>
-                <p className="font-mono text-sm font-semibold text-amber-300">
-                  {siteMetadata.contactPerson.whatsappDisplay}
-                </p>
+              {/* Direct WhatsApp Boxes (CP 1 & CP 2) */}
+              <div className="mt-5 space-y-3">
+                {siteMetadata.contactPersons.map((cp) => (
+                  <div
+                    key={cp.id}
+                    className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-sm"
+                  >
+                    <p className="text-xs font-bold uppercase tracking-wider text-zinc-300">
+                      {cp.label}
+                    </p>
+                    <p className="mt-0.5 font-display text-base font-extrabold text-white sm:text-lg">
+                      {cp.name}
+                    </p>
+                    <p className="font-mono text-sm font-semibold text-amber-300">
+                      {cp.whatsappDisplay}
+                    </p>
 
-                <a
-                  href={getWhatsAppUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-5 py-3 text-sm font-extrabold text-zinc-950 shadow-md transition-all duration-200 hover:bg-emerald-400 active:scale-[0.98]"
-                >
-                  <MessageCircle className="h-4 w-4 shrink-0" />
-                  <span>Chat Admin via WhatsApp</span>
-                  <ExternalLink className="h-4 w-4 shrink-0" />
-                </a>
+                    <a
+                      href={getWhatsAppUrl(cp.whatsappNumber)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-5 py-3 text-sm font-extrabold text-zinc-950 shadow-md transition-all duration-200 hover:bg-emerald-400 active:scale-[0.98]"
+                    >
+                      <MessageCircle className="h-4 w-4 shrink-0" />
+                      <span>Chat {cp.label} via WhatsApp</span>
+                      <ExternalLink className="h-4 w-4 shrink-0" />
+                    </a>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

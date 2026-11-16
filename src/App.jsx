@@ -2,6 +2,7 @@ import React, { useMemo, useState, useCallback } from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import CatalogSection from './components/CatalogSection';
+import SizeChartSection from './components/SizeChartSection';
 import TimelineSection from './components/TimelineSection';
 import FaqContactSection from './components/FaqContactSection';
 import Footer from './components/Footer';
@@ -51,6 +52,7 @@ export default function App() {
       <main className="overflow-x-hidden">
         <HeroSection onOpenShowcase={handleOpenHeroShowcase} />
         <CatalogSection onSelectItem={handleSelectItem} />
+        <SizeChartSection />
         <TimelineSection />
         <FaqContactSection />
       </main>

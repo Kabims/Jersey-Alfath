@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {
-  Check,
   Crown,
   ExternalLink,
   Flame,
@@ -68,27 +67,6 @@ function CategoryHeaderSpecBanner({ category }) {
           >
             {category.name}
           </h3>
-
-          {/* Material Specification Pills */}
-          <div className="mt-4 flex flex-wrap gap-2">
-            {category.specs.map((spec) => (
-              <span
-                key={spec}
-                className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold ${
-                  isPremium
-                    ? 'border border-white/15 bg-white/10 text-zinc-100'
-                    : 'border border-zinc-200 bg-zinc-50 text-zinc-800'
-                }`}
-              >
-                <Check
-                  className={`h-3.5 w-3.5 shrink-0 ${
-                    isPremium ? 'text-amber-400' : 'text-red-600'
-                  }`}
-                />
-                <span>{spec}</span>
-              </span>
-            ))}
-          </div>
         </div>
 
         {/* Prominent Category Price Badge */}
@@ -124,20 +102,33 @@ function CategoryHeaderSpecBanner({ category }) {
         </div>
       </div>
 
-      {/* Short 1-line Info Note */}
+      {/* Form Info Note + Quick Size Chart Shortcut */}
       <div
-        className={`mt-4 flex items-center gap-2 rounded-xl border px-3.5 py-2.5 text-xs font-semibold sm:text-sm ${
+        className={`mt-4 flex flex-col items-start justify-between gap-2.5 rounded-xl border px-3.5 py-2.5 text-xs font-semibold sm:flex-row sm:items-center sm:text-sm ${
           isPremium
             ? 'border-amber-400/30 bg-amber-400/10 text-amber-100'
             : 'border-red-200 bg-red-50/80 text-red-950'
         }`}
       >
-        <Ruler
-          className={`h-4 w-4 shrink-0 ${
-            isPremium ? 'text-amber-300' : 'text-red-600'
+        <div className="flex items-center gap-2">
+          <Ruler
+            className={`h-4 w-4 shrink-0 ${
+              isPremium ? 'text-amber-300' : 'text-red-600'
+            }`}
+          />
+          <p>{category.callout}</p>
+        </div>
+
+        <a
+          href="#size-chart"
+          className={`inline-flex shrink-0 items-center gap-1 rounded-lg px-3 py-1.5 text-xs font-extrabold transition-colors ${
+            isPremium
+              ? 'bg-amber-400 text-zinc-950 hover:bg-amber-300'
+              : 'bg-white text-red-700 shadow-sm ring-1 ring-red-200 hover:bg-red-100'
           }`}
-        />
-        <p>{category.callout}</p>
+        >
+          <span>Lihat Size Chart</span>
+        </a>
       </div>
     </div>
   );

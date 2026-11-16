@@ -9,9 +9,22 @@
  * 4. Jadwal Timeline Pre-Order & Nomor WhatsApp Contact Person
  */
 
-export const FORM_URL_PREMIUM = 'https://forms.gle/GantiLinkFormPremiumDisini';
-export const FORM_URL_RUNNING = 'https://forms.gle/GantiLinkFormRunningDisini';
-export const FORM_URL_FAKULTAS = 'https://forms.gle/GantiLinkFormFakultasDisini';
+export const toSafeExternalUrl = (url) => {
+  if (typeof url !== 'string') return '#';
+  const trimmed = url.trim();
+  return trimmed.startsWith('https://') ? trimmed : '#';
+};
+
+export const openSafeExternalUrl = (url) => {
+  const safeUrl = toSafeExternalUrl(url);
+  if (safeUrl === '#') return false;
+  window.open(safeUrl, '_blank', 'noopener,noreferrer');
+  return true;
+};
+
+export const FORM_URL_PREMIUM = toSafeExternalUrl('https://forms.gle/PwYeYyo3qfS6fu1LA');
+export const FORM_URL_RUNNING = toSafeExternalUrl('https://forms.gle/p3YtMKEEjRUmnQFp8');
+export const FORM_URL_FAKULTAS = toSafeExternalUrl('https://forms.gle/Augpn6Gbk6eStJSM7');
 
 export const FORM_URLS = {
   PREMIUM: FORM_URL_PREMIUM,
@@ -25,22 +38,42 @@ export const siteMetadata = {
   brandSubtitle: 'Universitas Telkom',
   heroBadge: 'OPEN PRE-ORDER — JERSEY RESMI UKM AL-FATH',
   logoUrl: '/images/alfath-logo.svg',
-  heroShowcaseImage: '/images/jerseys/fakultas-fte.jpg',
+  heroShowcaseImage: '/images/jerseys/premium-1.jpg',
   contactPerson: {
     name: 'Admin Pre-Order Jersey UKM Al-Fath',
     role: 'Contact Person Resmi Pre-Order',
-    whatsappDisplay: '+62 812-3456-7890',
-    whatsappNumber: '6281234567890', // Format internasional tanpa + atau 0 di depan
+    whatsappDisplay: '+62 822-4653-5645',
+    whatsappNumber: '6282246535645', // Format internasional tanpa + atau 0 di depan
     whatsappDefaultMessage:
       'Assalamualaikum Admin Pre-Order Jersey UKM Al-Fath, saya ingin bertanya mengenai Pre-Order Jersey UKM Al-Fath Universitas Telkom.',
   },
+  contactPersons: [
+    {
+      id: 'cp-1',
+      label: 'Contact Person 1',
+      name: 'Admin Pre-Order 1 (UKM Al-Fath)',
+      whatsappDisplay: '+62 822-4653-5645',
+      whatsappNumber: '6282246535645',
+    },
+    {
+      id: 'cp-2',
+      label: 'Contact Person 2',
+      name: 'Admin Pre-Order 2 (UKM Al-Fath)',
+      whatsappDisplay: '+62 851-1708-8518',
+      whatsappNumber: '6285117088518',
+    },
+  ],
 };
 
-export const getWhatsAppUrl = (customMessage) => {
+export const getWhatsAppUrl = (
+  whatsappNumber = siteMetadata.contactPerson.whatsappNumber,
+  customMessage
+) => {
+  const sanitizedNumber = String(whatsappNumber || '').replace(/\D/g, '');
   const message = encodeURIComponent(
     customMessage || siteMetadata.contactPerson.whatsappDefaultMessage
   );
-  return `https://wa.me/${siteMetadata.contactPerson.whatsappNumber}?text=${message}`;
+  return toSafeExternalUrl(`https://wa.me/${sanitizedNumber}?text=${message}`);
 };
 
 export const facultyFilters = [
@@ -54,8 +87,10 @@ export const facultyFilters = [
   { code: 'FIT', label: 'FIT', fullName: 'Fakultas Ilmu Terapan' },
 ];
 
-const SHARED_FORM_CALLOUT = 'Size Chart & pemilihan desain tersedia di Google Form';
-const SHARED_SHORT_CALLOUT = 'Size Chart & pemilihan desain tersedia di Google Form';
+const SHARED_FORM_CALLOUT =
+  'Pemilihan varian desain dan ukuran dilakukan di dalam Google Form';
+const SHARED_SHORT_CALLOUT =
+  'Pemilihan varian desain dan ukuran dilakukan di dalam Google Form';
 
 export const categories = {
   premium: {
@@ -70,11 +105,6 @@ export const categories = {
     ctaText: 'Pesan Jersey Premium — Pilih Desain di Form',
     callout: SHARED_FORM_CALLOUT,
     shortCallout: SHARED_SHORT_CALLOUT,
-    specs: [
-      'Bahan Dry-fit Emboss Jacquard',
-      'Full Printing Sublimasi Pro',
-      'Free Custom Nama & Nomor',
-    ],
     items: [
       {
         id: 'premium-01',
@@ -85,7 +115,7 @@ export const categories = {
       },
       {
         id: 'premium-02',
-        name: 'Premium Design 2 — Noble Light Gold (Away)',
+        name: 'Premium Design 2 — Royal Navy Gold (Away)',
         facultyCode: 'DESAIN 2',
         facultyName: 'Premium Edition • Away',
         imageUrl: '/images/jerseys/premium-2.jpg',
@@ -99,12 +129,11 @@ export const categories = {
     shortTabLabel: 'Jersey Running (1)',
     editionLabel: 'Running Series • 1 Desain',
     price: 'Rp 150.000',
-    priceNote: 'Harga Pre-Order • 1 Set Atasan + Celana',
+    priceNote: 'Harga Pre-Order • Atasan Saja (Tanpa Celana)',
     formUrl: FORM_URL_RUNNING,
     ctaText: 'Pesan Jersey Running (Google Form)',
     callout: SHARED_FORM_CALLOUT,
     shortCallout: SHARED_SHORT_CALLOUT,
-    specs: ['Bahan Dry-fit Premium', 'Full Printing Sublimasi', 'Breathable & Anti-UV'],
     items: [
       {
         id: 'running-01',
@@ -127,11 +156,6 @@ export const categories = {
     ctaText: 'Pesan Jersey Fakultas — Pilih Fakultas di Form',
     callout: SHARED_FORM_CALLOUT,
     shortCallout: SHARED_SHORT_CALLOUT,
-    specs: [
-      'Bahan Dry-fit Brazil Premium',
-      'Full Printing Sublimasi',
-      'Bisa Custom Nama & Nomor',
-    ],
     items: [
       {
         id: 'fakultas-fte',
@@ -192,6 +216,43 @@ export const categoryList = [
   categories.fakultas,
 ];
 
+export const sizeChart = {
+  ikhwan: {
+    id: 'ikhwan',
+    tabLabel: 'Size Chart Ikhwan (Laki-laki)',
+    title: 'Size Chart Jersey Ikhwan (Laki-laki)',
+    subtitle: 'Potongan Reguler • XS–4XL',
+    imageUrl: '/images/sizechart-ikhwan.jpg',
+    rows: [
+      { size: 'XS', lebarDada: 44, panjangBadan: 65 },
+      { size: 'S', lebarDada: 47, panjangBadan: 69 },
+      { size: 'M', lebarDada: 50, panjangBadan: 71 },
+      { size: 'L', lebarDada: 53, panjangBadan: 74 },
+      { size: 'XL', lebarDada: 56, panjangBadan: 77 },
+      { size: '2XL', lebarDada: 59, panjangBadan: 80 },
+      { size: '3XL', lebarDada: 61, panjangBadan: 83 },
+      { size: '4XL', lebarDada: 64, panjangBadan: 85 },
+    ],
+  },
+  akhwat: {
+    id: 'akhwat',
+    tabLabel: 'Size Chart Akhwat (Perempuan)',
+    title: 'Size Chart Jersey Akhwat (Perempuan)',
+    subtitle: 'Potongan Khusus Wanita • XS–4XL',
+    imageUrl: '/images/sizechart-akhwat.jpg',
+    rows: [
+      { size: 'XS', lebarDada: 49, panjangBadan: 64 },
+      { size: 'S', lebarDada: 51, panjangBadan: 67 },
+      { size: 'M', lebarDada: 53, panjangBadan: 69 },
+      { size: 'L', lebarDada: 55, panjangBadan: 71 },
+      { size: 'XL', lebarDada: 58, panjangBadan: 73 },
+      { size: '2XL', lebarDada: 59, panjangBadan: 75 },
+      { size: '3XL', lebarDada: 61, panjangBadan: 77 },
+      { size: '4XL', lebarDada: 63, panjangBadan: 79 },
+    ],
+  },
+};
+
 export const timelineSteps = [
   {
     step: '01',
@@ -236,7 +297,7 @@ export const faqs = [
   {
     question: 'Di mana saya bisa melihat Size Chart?',
     answer:
-      'Panduan ukuran lengkap S–XXXL tersedia di bagian atas masing-masing Google Form.',
+      'Panduan ukuran lengkap (Size Chart Ikhwan & Akhwat) dapat dilihat langsung pada bagian Size Chart (#size-chart) di halaman website ini sebelum mengisi Google Form pemesanan.',
   },
   {
     question: 'Bagaimana sistem pembayaran dan pengambilan jersey?',

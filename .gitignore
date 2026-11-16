@@ -1,8 +1,9 @@
 # Dependencies
 node_modules/
 
-# Production build
+# Production build & Vercel
 dist/
+.vercel/
 
 # Logs
 npm-debug.log*
@@ -11,6 +12,6 @@ yarn-error.log*
 
 # Environment & Editor
 .env
-.env.local
+.env.*
 .DS_Store
 .vscode/

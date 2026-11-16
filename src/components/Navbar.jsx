@@ -4,12 +4,14 @@ import {
   HelpCircle,
   LayoutGrid,
   MessageCircle,
+  Ruler,
   ShoppingBag,
 } from 'lucide-react';
 import { getWhatsAppUrl, siteMetadata } from '../data/jerseys';
 
 const navLinks = [
   { label: 'Katalog', href: '#katalog' },
+  { label: 'Size Chart', href: '#size-chart' },
   { label: 'Timeline PO', href: '#timeline' },
   { label: 'FAQ', href: '#faq' },
   { label: 'Kontak', href: '#kontak' },
@@ -76,15 +78,23 @@ export default function Navbar() {
       >
         <a
           href="#katalog"
-          className="flex min-h-[48px] flex-1 flex-col items-center justify-center gap-0.5 rounded-xl px-2 py-1 text-[11px] font-bold text-zinc-800 transition-transform active:scale-[0.98] active:bg-red-50 active:text-red-600"
+          className="flex min-h-[48px] flex-1 flex-col items-center justify-center gap-0.5 rounded-xl px-1.5 py-1 text-[11px] font-bold text-zinc-800 transition-transform active:scale-[0.98] active:bg-red-50 active:text-red-600"
         >
           <LayoutGrid className="h-4 w-4 text-red-600" />
           <span>Katalog</span>
         </a>
 
         <a
+          href="#size-chart"
+          className="flex min-h-[48px] flex-1 flex-col items-center justify-center gap-0.5 rounded-xl px-1.5 py-1 text-[11px] font-bold text-zinc-800 transition-transform active:scale-[0.98] active:bg-red-50 active:text-red-600"
+        >
+          <Ruler className="h-4 w-4 text-zinc-700" />
+          <span>Size Chart</span>
+        </a>
+
+        <a
           href="#timeline"
-          className="flex min-h-[48px] flex-1 flex-col items-center justify-center gap-0.5 rounded-xl px-2 py-1 text-[11px] font-bold text-zinc-800 transition-transform active:scale-[0.98] active:bg-red-50 active:text-red-600"
+          className="flex min-h-[48px] flex-1 flex-col items-center justify-center gap-0.5 rounded-xl px-1.5 py-1 text-[11px] font-bold text-zinc-800 transition-transform active:scale-[0.98] active:bg-red-50 active:text-red-600"
         >
           <CalendarClock className="h-4 w-4 text-zinc-700" />
           <span>Timeline</span>
@@ -92,7 +102,7 @@ export default function Navbar() {
 
         <a
           href="#faq"
-          className="flex min-h-[48px] flex-1 flex-col items-center justify-center gap-0.5 rounded-xl px-2 py-1 text-[11px] font-bold text-zinc-800 transition-transform active:scale-[0.98] active:bg-red-50 active:text-red-600"
+          className="flex min-h-[48px] flex-1 flex-col items-center justify-center gap-0.5 rounded-xl px-1.5 py-1 text-[11px] font-bold text-zinc-800 transition-transform active:scale-[0.98] active:bg-red-50 active:text-red-600"
         >
           <HelpCircle className="h-4 w-4 text-zinc-700" />
           <span>FAQ</span>
@@ -102,7 +112,7 @@ export default function Navbar() {
           href={getWhatsAppUrl()}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex min-h-[48px] flex-1 flex-col items-center justify-center gap-0.5 rounded-xl px-2 py-1 text-[11px] font-bold text-emerald-700 transition-transform active:scale-[0.98] active:bg-emerald-50"
+          className="flex min-h-[48px] flex-1 flex-col items-center justify-center gap-0.5 rounded-xl px-1.5 py-1 text-[11px] font-bold text-emerald-700 transition-transform active:scale-[0.98] active:bg-emerald-50"
         >
           <MessageCircle className="h-4 w-4 text-emerald-600" />
           <span>Chat CP</span>
